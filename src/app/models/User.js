@@ -22,6 +22,10 @@ class User extends Model {
             isEmail: true,
           },
         },
+        ativar_usuario: {
+          allowNull: false,
+          type: Sequelize.BOOLEAN,
+        },
         password: {
           type: Sequelize.VIRTUAL,
         },

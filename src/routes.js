@@ -26,8 +26,6 @@ routes.get('/produtos/:uid', ProdutoController.show);
 routes.post('/users', UserController.store);
 routes.get('/users', UserController.index);
 
-// Rota para AUTH
-
 routes.post('/login', AuthController.store);
 
 // Rotas autenticadas

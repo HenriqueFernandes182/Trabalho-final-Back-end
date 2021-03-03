@@ -14,6 +14,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
+      ativar_usuario: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+      },
       password_hash: {
         type: Sequelize.STRING,
       },
