@@ -21,16 +21,19 @@ class AuthController {
 
       const { uid, name } = user;
 
-      return res.json({
-        user: {
-          uid,
-          name,
-          email,
-        },
-        token: jwt.sign({ uid }, authConfig.secret, {
-          expiresIn: authConfig.expiresIn,
-        }),
-      });
+      return res.status(200).json({ uid, name });
+
+
+      // return res.json({
+      //   user: {
+      //     uid,
+      //     name,
+      //     email,
+      //   },
+      //   token: jwt.sign({ uid }, authConfig.secret, {
+      //     expiresIn: authConfig.expiresIn,
+      //   }),
+      // });
     } catch (error) {
       return res.json({ error });
     }
