@@ -18,7 +18,6 @@ routes.post('/marcas', MarcaController.store);
 routes.get('/marcas', MarcaController.index);
 
 // ROTAS PARA PRODUTOS
-
 routes.get('/produtos', ProdutoController.index);
 routes.get('/produtos/:uid', ProdutoController.show);
 
@@ -31,8 +30,8 @@ routes.post('/login', AuthController.store);
 // Rotas autenticadas
 
 routes.use(authMiddleware);
-// rotas para usuario auth
 
+// rotas para usuario auth
 routes.put('/users/:uid', UserController.update);
 
 // ROTAS PARA PRODUTOS COM AUTH

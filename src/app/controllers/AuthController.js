@@ -8,7 +8,6 @@ class AuthController {
   async store(req, res) {
     try {
       const { email, password } = req.body;
-
       const user = await User.findOne({ where: { email } });
 
       if (!user) {
@@ -21,19 +20,16 @@ class AuthController {
 
       const { uid, name } = user;
 
-      return res.status(200).json({ uid, name });
-
-
-      // return res.json({
-      //   user: {
-      //     uid,
-      //     name,
-      //     email,
-      //   },
-      //   token: jwt.sign({ uid }, authConfig.secret, {
-      //     expiresIn: authConfig.expiresIn,
-      //   }),
-      // });
+      return res.json({
+        user: {
+          uid,
+          name,
+          email,
+        },
+        token: jwt.sign({ uid }, authConfig.secret, {
+          expiresIn: authConfig.expiresIn,
+        }),
+      });
     } catch (error) {
       return res.json({ error });
     }
