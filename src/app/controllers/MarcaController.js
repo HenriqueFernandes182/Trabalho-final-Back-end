@@ -22,3 +22,11 @@ class MarcaController {
   }
 }
 export default new MarcaController();
+// async show() {
+//   try {
+//     const { uid } = req.params;
+//     const marca = await Marca.findByPk
+//   } catch (error) {
+
+//   }
+// }
