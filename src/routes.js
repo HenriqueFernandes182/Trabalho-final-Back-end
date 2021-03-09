@@ -27,8 +27,6 @@ routes.get('/users', UserController.index);
 
 routes.post('/login', AuthController.store);
 
-
-
 // rotas para usuario auth
 routes.put('/users/:uid', UserController.update);
 
