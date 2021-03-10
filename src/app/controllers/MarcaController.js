@@ -14,7 +14,7 @@ class MarcaController {
   async index(req, res) {
     try {
       const marcas = await Marca.findAll({
-        attributes: ['uid', 'name'],
+        attributes: ['name', 'uid'],
       });
       return res.json({ marcas });
     } catch (error) {
@@ -27,15 +27,31 @@ class MarcaController {
       const { uid } = req.params;
 
       const marca = await Marca.findByPk(uid, {
-        attributes: ['uid', 'name'],
+        attributes: ['name', 'uid'],
         include: [
           {
             model: Produto,
             as: 'produtos',
-            attributes: ['uid', 'name'],
+            attributes: ['name', 'uid'],
           },
         ],
       });
+
+      return res.json({ marca });
+    } catch (error) {
+      return res.json({ error });
+    }
+  }
+
+  async delete(req, res){
+    try {
+      const { uid } = req.params;
+
+      const marca = await Marca.destroy({ where: { uid } });
+
+      if (!marca) {
+        throw Error('marca não encontrada');
+      }
 
       return res.json({ marca });
     } catch (error) {

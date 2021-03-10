@@ -14,12 +14,12 @@ class ProdutoController {
   async index(req, res) {
     try {
       const produtos = await Produto.findAll({
-        attributes: ['uid', 'name', 'quantidade', 'marca_uid'],
+        attributes: ['name', 'quantidade', 'uid'],
         include: [
           {
             model: Marca,
             as: 'marcas',
-            attributes: ['uid', 'name'],
+            attributes: ['name', 'uid'],
           },
         ],
       });
@@ -65,13 +65,14 @@ class ProdutoController {
       return res.json({ error });
     }
   }
+
   async delete(req, res) {
     try {
       const { uid } = req.params;
 
       const produto = await Produto.destroy({ where: { uid } });
 
-      if(!produto) {
+      if (!produto) {
         throw Error('Produto não encontrado');
       }
 
