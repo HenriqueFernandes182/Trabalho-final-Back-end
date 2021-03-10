@@ -1,3 +1,4 @@
+import Marca from '../models/Marca';
 import Produto from '../models/Produto';
 
 class ProdutoController {
@@ -14,6 +15,13 @@ class ProdutoController {
     try {
       const produtos = await Produto.findAll({
         attributes: ['uid', 'name', 'quantidade', 'marca_uid'],
+        include: [
+          {
+            model: Marca,
+            as: 'marcas',
+            attributes: ['uid', 'name'],
+          },
+        ],
       });
       return res.json({ produtos });
     } catch (error) {
@@ -25,7 +33,16 @@ class ProdutoController {
     try {
       const { uid } = req.params;
 
-      const produto = await Produto.findByPk(uid);
+      const produto = await Produto.findByPk(uid, {
+        attributes: ['name', 'quantidade', 'uid'],
+        include: [
+          {
+            model: Marca,
+            as: 'marcas',
+            attributes: ['name', 'uid'],
+          },
+        ],
+      });
 
       return res.json({ produto });
     } catch (error) {

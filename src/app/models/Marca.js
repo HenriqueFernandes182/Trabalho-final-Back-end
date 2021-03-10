@@ -21,5 +21,12 @@ class Marca extends Model {
     );
     return this;
   }
+
+  static associate(models) {
+    this.hasMany(models.Produto, {
+      as: 'produtos',
+      foreignKey: 'marca_uid',
+    });
+  }
 }
 export default Marca;

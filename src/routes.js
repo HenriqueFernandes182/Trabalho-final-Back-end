@@ -16,6 +16,7 @@ routes.get('/', (req, res) => res.json({ result: 'TEST-API' }));
 //  ROTAS PARA MARCAS
 routes.post('/marcas', MarcaController.store);
 routes.get('/marcas', MarcaController.index);
+routes.get('/marcas/:uid', MarcaController.show);
 
 // ROTAS PARA PRODUTOS
 routes.get('/produtos', ProdutoController.index);
