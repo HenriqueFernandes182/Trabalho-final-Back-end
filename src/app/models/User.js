@@ -23,7 +23,7 @@ class User extends Model {
           },
         },
         ativar_usuario: {
-          allowNull: false,
+          allowNull: true,
           type: Sequelize.BOOLEAN,
         },
         password: {
