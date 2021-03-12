@@ -33,9 +33,9 @@ routes.post('/produtos', ProdutoController.store);
 routes.put('/produtos/:uid', ProdutoController.update);
 routes.delete('/produtos/:uid', ProdutoController.delete);
 // Rotas autenticadas
-routes.use(authMiddleware);
 
 // rotas para usuario auth
 routes.put('/users/:uid', UserController.update);
+routes.use(authMiddleware);
 
 export default routes;
