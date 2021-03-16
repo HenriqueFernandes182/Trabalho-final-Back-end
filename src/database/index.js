@@ -5,8 +5,9 @@ import databaseConfig from '../config/database';
 import User from '../app/models/User';
 import Marca from '../app/models/Marca';
 import Produto from '../app/models/Produto';
+import ProdutoMarca from '../app/models/ProdutoMarca';
 
-const models = [User, Marca, Produto];
+const models = [User, Marca, Produto, ProdutoMarca];
 
 class DataBase {
   constructor() {

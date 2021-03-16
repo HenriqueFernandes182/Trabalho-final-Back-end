@@ -1,5 +1,6 @@
 import Marca from '../models/Marca';
 import Produto from '../models/Produto';
+// import ProdutoMarca from '../models/ProdutoMarca';
 
 class ProdutoController {
   async store(req, res) {
@@ -10,6 +11,33 @@ class ProdutoController {
       return res.json({ error });
     }
   }
+  // async store(req, res) {
+  //   const t = await Produto.sequelize.transaction();
+  //   try {
+  //     const produto = await Produto.create(req.body, {
+  //       transaction: t,
+  //     });
+
+  //     const { marcas } = req.boby;
+
+  //     await Promise.all(
+  //       marcas.map(async (marca_uid) => {
+  //         const marca = await ProdutoMarca.create(
+  //           {
+  //             marca_uid: marca_uid,
+  //             produto_uid
+  //           },
+  //           { transaction: t }
+  //         );
+  //         return marca;
+  //       })
+  //     );
+  //     await t.commit();
+  //     return res.json({ produto });
+  //   } catch (error) {
+  //     return res.json({ error });
+  //   }
+  // }
 
   async index(req, res) {
     try {
